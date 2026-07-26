@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.env
+.vscode
+
+# Terraform
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Kubernetes secrets
+k8s/backend-secret.yaml
