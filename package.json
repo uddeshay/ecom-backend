@@ -4,7 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@model/(.*)$": "<rootDir>/models/$1",
+      "^@service/(.*)$": "<rootDir>/services/$1",
+      "^@validator/(.*)$": "<rootDir>/validators/$1"
+    }
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
@@ -32,5 +41,9 @@
     "@validator": "./validators",
     "@service": "./services",
     "@model": "./models"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
   }
 }
