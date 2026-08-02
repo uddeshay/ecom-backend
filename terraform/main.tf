@@ -38,7 +38,7 @@ resource "azurerm_network_security_group" "aks" {
   name                = "aks-nsg"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
-//is rume me hmne bola h port 80 se jo bhi req aaye usko allow karo aur port 443 se jo bhi req aaye usko allow karo baki sare req ko deny kar do
+  //is rume me hmne bola h port 80 se jo bhi req aaye usko allow karo aur port 443 se jo bhi req aaye usko allow karo baki sare req ko deny kar do
   security_rule {
     name                       = "allow-http"
     priority                   = 100
@@ -77,11 +77,11 @@ resource "azurerm_kubernetes_cluster" "main" {
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   dns_prefix          = "ecom-aks"
-// isme id kaha se aaya h to azure jb subnet bnata h to hr subnet koek unique id de deta h jo baut bdi string hoti h ,to hm direct id ka use krke bta dete h ki bhai ye jo vm bnane wale ho tum usko isi subnet me bnana
-// Azure har subnet ko ek unique Resource ID deta hai.
-// Terraform us ID ko automatically read karta hai.
-// vnet_subnet_id me ye ID pass karke hum AKS ko batate hain
-// ki Worker Nodes isi subnet me create hone chahiye.
+  // isme id kaha se aaya h to azure jb subnet bnata h to hr subnet koek unique id de deta h jo baut bdi string hoti h ,to hm direct id ka use krke bta dete h ki bhai ye jo vm bnane wale ho tum usko isi subnet me bnana
+  // Azure har subnet ko ek unique Resource ID deta hai.
+  // Terraform us ID ko automatically read karta hai.
+  // vnet_subnet_id me ye ID pass karke hum AKS ko batate hain
+  // ki Worker Nodes isi subnet me create hone chahiye.
   default_node_pool {
     name           = "default"
     node_count     = 1
@@ -97,7 +97,7 @@ resource "azurerm_kubernetes_cluster" "main" {
   //2 types of plugins hote h azure and kubenet ,azure me pod ko subnet se ip milta h aur kubenet me pod ko node ka ip milta h
   // kubernet plugn me jo pods hote h unko ip jo milti h vo vm se milti h hota kya h sare pods ek dushre se connect kaise rahte h to uske lie us vm k andr ek bridge bnta h 10.1.0.0/24 ab ye bridge un pods ko ip deta h ,is case me vnet ko pod ka ip pta hi nhi hota to req pod tk aa hi nhi pati pr vm tk aa pati h kyoki vm ko ip subnet se milti h is case me NAT aata h jo vm se pod tk request ko forward karta h aur response ko vm se bahar forward karta h
   //azure me direct pod ko ip subnet se mil jati h isliye process smooth rahta h 
-  
+
 
   network_profile {
     network_plugin = "azure"
